@@ -1,0 +1,85 @@
+/*** general style, only test =========================== */
+* {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+body { font:300 18px/30px Helvetica, Arial, Tahoma, sans-serif; color:#333; background:#fff; }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea {
+	padding:13px 17px 2px 17px;
+	margin-bottom:20px;
+	height:50px;
+	font-family:Helvetica, arial, tahoma, sans-serif;
+	font-size:18px;
+	color:#fff;
+	border:2px solid #c38919;
+	background-color:#f4ab1f;
+	text-shadow:2px 2px 0 rgba(0,0,0,0.15);
+}
+textarea { height:auto; }
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	border-color:#000;
+	background-color:#f4ab1f;
+}
+select {
+	padding:13px 17px 2px 13px;
+	margin-bottom:20px;
+	height:50px;
+	font-family:Helvetica, arial, tahoma, sans-serif;
+	font-size:18px;
+	color:#fff;
+	border:2px solid #c38919;
+	background:#f4ab1f;
+	text-shadow:2px 2px 0 rgba(0,0,0,0.15);
+}
+select:focus {
+	border-color:#000;
+	background-color:#f4ab1f;
+}
+
+
+
+
+
+/*** Animated Placeholder =========================== */
+label.animatedplaceholder {
+	font:700 16px/18px Helvetica, arial, tahoma, sans-serif;
+	color:#fff;
+	text-shadow:2px 2px 0 rgba(0,0,0,0.15);
+	text-transform:uppercase;
+	cursor:text;
+}
+label.animatedplaceholder.placeholder-focus {
+	font-size:14px;
+	color:#72450A;
+	text-shadow:none;
+}

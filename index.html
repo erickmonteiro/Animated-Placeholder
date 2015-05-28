@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+
+	<title>Animated Placeholder</title>
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+	<form action="#" method="post">
+
+		<div>
+			<input type="text" name="name" placeholder="Your name" value="Erick Monteiro"> with default value
+		</div>
+
+		<div>
+			<input type="password" name="password" placeholder="Password">
+		</div>
+
+		<div>
+			<input type="email" name="email" placeholder="E-mail">
+		</div>
+
+		<div>
+			<select name="country" placeholder="Country">
+				<option value=""></option>
+				<option value="BR">Brazil</option>
+				<option value="US">United States</option>
+			</select>
+		</div>
+
+		<div>
+			<textarea rows="5" cols="50" name="message" placeholder="Your message"></textarea>
+		</div>
+
+		<input type="submit" value="Submit" />
+
+	</form>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/animated-placeholder.js"></script>
+
+	<script>
+		$(document).ready(function()
+		{
+			$('[placeholder]').animatedplaceholder();
+		});
+	</script>
+
+</body>
+</html>
