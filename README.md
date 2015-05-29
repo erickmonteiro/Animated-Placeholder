@@ -1,5 +1,5 @@
 # Animated-Placeholder
-HTML5 Animated placeholder
+Animated HTML5 placeholder uses CSS3 animation in supported browsers and supports the jquery animation for older browsers.
 
 ##Requirements
 jQuery 1.7 or higher
