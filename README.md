@@ -2,7 +2,7 @@
 Animated HTML5 placeholder uses CSS3 animation in supported browsers and supports the jquery animation for older browsers.
 
 Here's an example of how the plugin works in:
-<a href="https://youtu.be/jVD7vFT16IY" target="_blank">https://youtu.be/jVD7vFT16IY</a>
+[https://youtu.be/jVD7vFT16IY](https://youtu.be/jVD7vFT16IY) 
 
 ##Requirements
 jQuery 1.7 or higher
