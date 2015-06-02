@@ -45,7 +45,12 @@
 	<script>
 		$(document).ready(function()
 		{
-			$('[placeholder]').animatedplaceholder();
+			$("[placeholder]").animatedplaceholder({
+				label_top       : '16px',
+				label_left      : '17px',
+				label_focus_top : '3px',
+				label_focus_left: '17px'
+			});
 		});
 	</script>
 

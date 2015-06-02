@@ -48,10 +48,10 @@ var animatePlaceholderCssAnim = has3dTransform();
 			'placeholder_attr' : 'placeholder',
 			'label_class'      : 'animatedplaceholder',
 			'label_class_focus': 'placeholder-focus',
-			'label_top'        : '16px',
-			'label_left'       : '17px',
-			'label_focus_top'  : '3px',
-			'label_focus_left' : '17px'
+			'label_top'        : '8px',
+			'label_left'       : '9px',
+			'label_focus_top'  : '1px',
+			'label_focus_left' : '9px'
 		};
 
 		if( settings )
@@ -108,7 +108,7 @@ var animatePlaceholderCssAnim = has3dTransform();
 			var label_focus_left = ( obj.attr('data-placeholder-focus-left') !== undefined ) ? obj.attr('data-placeholder-focus-left') : config.label_focus_left;
 
 			// create the label
-			var label = $('<label class="' + config.label_class + '" style="position:absolute;-ms-touch-action:none;">' + placeholderText + '</label>');
+			var label = $('<label class="' + config.label_class + '" style="position:absolute;-ms-touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">' + placeholderText + '</label>');
 
 			// insert the label after the field
 			obj.before(label);
