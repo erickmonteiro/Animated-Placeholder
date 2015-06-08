@@ -136,22 +136,26 @@ var animatePlaceholderCssAnim = has3dTransform();
 			// input focus and blur
 			obj.on("focus blur change", function(e)
 			{
-				if( e.type == 'focus' || obj.val() )
+				// Executes with delay, so if you have any masking plug the obj.val () will return "" if it is not filled in the same mask
+				setTimeout(function()
 				{
-					// label add class focus
-					label.addClass(config.label_class_focus);
+					if( e.type == 'focus' || obj.val() )
+					{
+						// label add class focus
+						label.addClass(config.label_class_focus);
 
-					// label position
-					animated(label, 'focus', label_focus_top, label_focus_left);
-				}
-				else
-				{
-					// label remove class focus
-					label.removeClass(config.label_class_focus);
+						// label position
+						animated(label, 'focus', label_focus_top, label_focus_left);
+					}
+					else
+					{
+						// label remove class focus
+						label.removeClass(config.label_class_focus);
 
-					// label position
-					animated(label, 'blur', label_top, label_left);
-				}
+						// label position
+						animated(label, 'blur', label_top, label_left);
+					}
+				}, 10);
 			});
 
 		});
