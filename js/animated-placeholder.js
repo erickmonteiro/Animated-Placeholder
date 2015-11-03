@@ -89,6 +89,14 @@ var animatePlaceholderCssAnim = has3dTransform();
 			// get obj
 			var obj = $(this);
 
+			// Check if disabled
+			var disabled = obj.attr('data-placeholder-disabled');
+
+			if( typeof disabled !== typeof undefined && disabled !== false )
+			{
+				return;
+			}
+
 			// get obj placeholder
 			var placeholderText = obj.attr(config.placeholder_attr);
 
