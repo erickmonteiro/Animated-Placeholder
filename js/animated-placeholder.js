@@ -4,6 +4,8 @@
  * Licensed under the Apache License 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
+ * https://github.com/erickmonteiro/Animated-Placeholder
+ *
  * Author: Erick Monteiro [http://www.erickmonteiro.com.br]
  */
 
