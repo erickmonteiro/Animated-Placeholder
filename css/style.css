@@ -71,15 +71,12 @@ select:focus {
 
 
 /*** Animated Placeholder =========================== */
-label.animatedplaceholder {
+.animatedplaceholder {
 	font:700 16px/18px Helvetica, arial, tahoma, sans-serif;
 	color:#fff;
-	text-shadow:2px 2px 0 rgba(0,0,0,0.15);
 	text-transform:uppercase;
 	cursor:text;
 }
-label.animatedplaceholder.placeholder-focus {
-	font-size:14px;
+.animatedplaceholder.placeholder-focus {
 	color:#72450A;
-	text-shadow:none;
 }

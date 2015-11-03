@@ -10,7 +10,7 @@
 // check 3d transform support, thanks https://gist.github.com/lorenzopolidori/3794226
 function has3dTransform()
 {
-	var el = document.createElement('p'),
+	var el         = document.createElement('p'),
 		has3d,
 		transforms = {
 			'webkitTransform': '-webkit-transform',
@@ -27,7 +27,7 @@ function has3dTransform()
 		if( el.style[t] !== undefined )
 		{
 			el.style[t] = 'translate3d(1px,1px,1px)';
-			has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+			has3d       = window.getComputedStyle(el).getPropertyValue(transforms[t]);
 		}
 	}
 
@@ -48,10 +48,11 @@ var animatePlaceholderCssAnim = has3dTransform();
 			'placeholder_attr' : 'placeholder',
 			'label_class'      : 'animatedplaceholder',
 			'label_class_focus': 'placeholder-focus',
-			'label_top'        : '8px',
-			'label_left'       : '9px',
-			'label_focus_top'  : '1px',
-			'label_focus_left' : '9px'
+			'label_top'        : '12px',
+			'label_left'       : '14px',
+			'label_focus_top'  : '0px',
+			'label_focus_left' : '14px',
+			'label_focus_size' : 0.7
 		};
 
 		if( settings )
@@ -60,23 +61,23 @@ var animatePlaceholderCssAnim = has3dTransform();
 		}
 
 		// animate label position css3 or top/left
-		var animated = function(label, action, top, left)
+		var animated = function(label, action, top, left, size)
 		{
 			// if support css3
 			if( animatePlaceholderCssAnim )
 			{
-				label[0].style.cssText += '-webkit-transition:all 0.2s ease-in-out; -ms-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; -webkit-transform:translate3d(' + left + ',' + top + ',0); -ms-transform:translate3d(' + left + ',' + top + ',0); transform:translate3d(' + left + ',' + top + ',0);'
+				label[0].style.cssText += '-webkit-transition:all 0.2s ease-in-out; -ms-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; -webkit-transform-origin:left top; -ms-transform-origin:left top; transform-origin:left top; -webkit-transform:translate3d(' + left + ',' + top + ',0) scale(' + size + '); -ms-transform:translate3d(' + left + ',' + top + ',0) scale(' + size + '); transform:translate3d(' + left + ',' + top + ',0) scale(' + size + ');'
 			}
 			else
 			{
 				// if initial position
-				if( action == 'initial' )
+				if( action == 'initial' || action == 'initial.active' )
 				{
-					label.css({top: top, left: left});
+					label.css({fontSize: size, top: top, left: left});
 				}
 				else
 				{
-					label.animate({top: top, left: left}, 200);
+					label.animate({fontSize: size, top: top, left: left}, 200);
 				}
 			}
 		};
@@ -92,6 +93,9 @@ var animatePlaceholderCssAnim = has3dTransform();
 			// get parent obj
 			var parent = obj.parent();
 
+			// check if parent is label tag
+			var parent_is_label = parent.prop('tagName') == 'LABEL';
+
 			// remove placeholder input
 			obj.removeAttr(config.placeholder_attr);
 
@@ -102,16 +106,25 @@ var animatePlaceholderCssAnim = has3dTransform();
 			}
 
 			// defini label position
-			var label_top = ( obj.attr('data-placeholder-top') !== undefined ) ? obj.attr('data-placeholder-top') : config.label_top;
-			var label_left = ( obj.attr('data-placeholder-left') !== undefined ) ? obj.attr('data-placeholder-left') : config.label_left;
-			var label_focus_top = ( obj.attr('data-placeholder-focus-top') !== undefined ) ? obj.attr('data-placeholder-focus-top') : config.label_focus_top;
+			var label_top        = ( obj.attr('data-placeholder-top') !== undefined ) ? obj.attr('data-placeholder-top') : config.label_top;
+			var label_left       = ( obj.attr('data-placeholder-left') !== undefined ) ? obj.attr('data-placeholder-left') : config.label_left;
+			var label_focus_top  = ( obj.attr('data-placeholder-focus-top') !== undefined ) ? obj.attr('data-placeholder-focus-top') : config.label_focus_top;
 			var label_focus_left = ( obj.attr('data-placeholder-focus-left') !== undefined ) ? obj.attr('data-placeholder-focus-left') : config.label_focus_left;
+			var label_focus_size = ( obj.attr('data-placeholder-focus-size') !== undefined ) ? obj.attr('data-placeholder-focus-size') : config.label_focus_size;
+			var label_size       = 1;
 
 			// create the label
-			var label = $('<label class="' + config.label_class + '" style="position:absolute;-ms-touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">' + placeholderText + '</label>');
+			var label = $('<' + (parent_is_label ? 'div' : 'label') + ' class="' + config.label_class + '" style="position:absolute;-ms-touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">' + placeholderText + '</' + (parent_is_label ? 'div' : 'label') + '>');
 
 			// insert the label after the field
 			obj.before(label);
+
+			// if don't support css3
+			if( !animatePlaceholderCssAnim )
+			{
+				label_size       = parseInt(label.css('font-size'));
+				label_focus_size = parseInt(label_size * label_focus_size);
+			}
 
 			// if value exist
 			if( obj.val() )
@@ -120,18 +133,23 @@ var animatePlaceholderCssAnim = has3dTransform();
 				label.addClass(config.label_class_focus);
 
 				// label position
-				animated(label, 'initial', label_focus_top, label_focus_left);
+				animated(label, 'initial.active', label_focus_top, label_focus_left, label_focus_size);
 			}
 			else
 			{
 				// label position
-				animated(label, 'initial', label_top, label_left);
+				animated(label, 'initial', label_top, label_left, label_size);
 			}
 
-			label.click(function(e)
+			// if parent not is label
+			if( !parent_is_label )
 			{
-				obj.focus();
-			});
+				// onclick label
+				label.click(function(e)
+				{
+					obj.focus();
+				});
+			}
 
 			// input focus and blur
 			obj.on("focus blur change", function(e)
@@ -145,7 +163,7 @@ var animatePlaceholderCssAnim = has3dTransform();
 						label.addClass(config.label_class_focus);
 
 						// label position
-						animated(label, 'focus', label_focus_top, label_focus_left);
+						animated(label, 'focus', label_focus_top, label_focus_left, label_focus_size);
 					}
 					else
 					{
@@ -153,7 +171,7 @@ var animatePlaceholderCssAnim = has3dTransform();
 						label.removeClass(config.label_class_focus);
 
 						// label position
-						animated(label, 'blur', label_top, label_left);
+						animated(label, 'blur', label_top, label_left, label_size);
 					}
 				}, 10);
 			});

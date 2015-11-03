@@ -32,15 +32,14 @@ jQuery 1.7 or higher
 ###Css:
 ```css
 /* normal state placeholder */
-label.animatedplaceholder {
+.animatedplaceholder {
   font:700 16px/18px Helvetica, arial, tahoma, sans-serif;
   color:#666666;
   text-transform:uppercase;
   cursor:text;
 }
 /* focus state placeholder */
-label.animatedplaceholder.placeholder-focus {
-  font-size:14px;
+.animatedplaceholder.placeholder-focus {
   color:#333;
 }
 ```
@@ -72,13 +71,14 @@ label.animatedplaceholder.placeholder-focus {
     // Starts placeholder
     $('[placeholder]').animatedplaceholder({
       // Plugin default config
-			'placeholder_attr' : 'placeholder', // attribute with the name for the label
-			'label_class'      : 'animatedplaceholder', // label class
-			'label_class_focus': 'placeholder-focus', // label class on focus
-			'label_top'        : '16px', // TOP starting position of the label
-			'label_left'       : '17px', // LEFT starting position of the label
-			'label_focus_top'  : '3px', // TOP focus position of the label
-			'label_focus_left' : '17px' // LEFT focus position of the label
+			'placeholder_attr' : 'placeholder',
+			'label_class'      : 'animatedplaceholder',
+			'label_class_focus': 'placeholder-focus',
+			'label_top'        : '12px',
+			'label_left'       : '14px',
+			'label_focus_top'  : '0px',
+			'label_focus_left' : '14px',
+			'label_focus_size' : 0.7
     });
   });
 </script>
@@ -88,7 +88,7 @@ label.animatedplaceholder.placeholder-focus {
 
 ```html
 <div>
-  <input type="text" name="name" placeholder="Your name" data-placeholder-top="16px" data-placeholder-left="17px" data-placeholder-focus-top="3px" data-placeholder-focus-left="17px">
+  <input type="text" name="name" placeholder="Your name" data-placeholder-top="16px" data-placeholder-left="17px" data-placeholder-focus-top="3px" data-placeholder-focus-left="17px" data-placeholder-focus-size="0.7">
 </div>
 ```
 
