@@ -68,7 +68,7 @@ var animatePlaceholderCssAnim = has3dTransform();
 			// if support css3
 			if( animatePlaceholderCssAnim )
 			{
-				label[0].style.cssText += '-webkit-transition:all 0.2s ease-in-out; -ms-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; -webkit-transform-origin:left top; -ms-transform-origin:left top; transform-origin:left top; -webkit-transform:translate3d(' + left + ',' + top + ',0) scale(' + size + '); -ms-transform:translate3d(' + left + ',' + top + ',0) scale(' + size + '); transform:translate3d(' + left + ',' + top + ',0) scale(' + size + ');'
+				label[0].style.cssText += '-webkit-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out; -webkit-transform-origin:left top; -ms-transform-origin:left top; transform-origin:left top; -webkit-transform:translate3d(' + left + ',' + top + ',0) scale(' + size + '); -ms-transform:translateX(' + left + ') translateY(' + top + ') scale(' + size + '); transform:translate3d(' + left + ',' + top + ',0) scale(' + size + ');'
 			}
 			else
 			{
