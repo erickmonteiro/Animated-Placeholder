@@ -124,7 +124,7 @@ var animatePlaceholderCssAnim = has3dTransform();
 			var label_size       = 1;
 
 			// create the label
-			var label = $('<' + (parent_is_label ? 'div' : 'label') + ' class="' + config.label_class + '" style="position:absolute;-ms-touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">' + placeholderText + '</' + (parent_is_label ? 'div' : 'label') + '>');
+			var label = $('<' + (parent_is_label ? 'div' : 'label') + ' class="' + config.label_class + '" style="position:absolute;top:0;left:0;pointer-events:none;-ms-touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">' + placeholderText + '</' + (parent_is_label ? 'div' : 'label') + '>');
 
 			// insert the label after the field
 			obj.before(label);
@@ -154,9 +154,10 @@ var animatePlaceholderCssAnim = has3dTransform();
 			// if parent not is label
 			if( !parent_is_label )
 			{
-				// onclick label
+				// onclick label, only IE 10-
 				label.click(function(e)
 				{
+					console.log('teste');
 					obj.focus();
 				});
 			}
