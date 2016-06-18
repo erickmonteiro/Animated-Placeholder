@@ -157,7 +157,6 @@ var animatePlaceholderCssAnim = has3dTransform();
 				// onclick label, only IE 10-
 				label.click(function(e)
 				{
-					console.log('teste');
 					obj.focus();
 				});
 			}
