@@ -126,7 +126,7 @@ var animatePlaceholderCssAnim = has3dTransform();
 			// create the label
 			var label = $('<' + (parent_is_label ? 'div' : 'label') + ' class="' + config.label_class + '" style="position:absolute;top:0;left:0;pointer-events:none;-ms-touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">' + placeholderText + '</' + (parent_is_label ? 'div' : 'label') + '>');
 
-			// insert the label after the field
+			// insert the label before the field
 			obj.before(label);
 
 			// if don't support css3
